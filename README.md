@@ -1,9 +1,10 @@
 # Cronograma de Desenvolvimento
 
 ## 1. Configuração inicial
-- [ ] Criar repositório no GitHub.
-- [ ] Configurar ambiente de desenvolvimento.
-- [ ] Criar projeto React Native com Expo.
+- [x] Criar repositório no GitHub.
+- [x] Configurar ambiente de desenvolvimento.
+- [x] Criar projeto React Native.
+- [ ] Add o Expo.
 - [ ] Configurar estrutura de diretórios.
 - [ ] Configurar navegação entre telas.
 - [ ] Definir arquitetura do sistema.
