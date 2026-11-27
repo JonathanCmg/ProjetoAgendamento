@@ -4,28 +4,24 @@
 - [x] Criar repositório no GitHub.
 - [x] Configurar ambiente de desenvolvimento.
 - [x] Criar projeto React Native.
-- [ ] Add o Expo.
-- [ ] Configurar estrutura de diretórios.
-- [ ] Configurar navegação entre telas.
-- [ ] Definir arquitetura do sistema.
-- [ ] Configurar conexão com o servidor.
+- [x] Add o Expo.
+- [x] Configurar estrutura de diretórios.
+- [x] Configurar navegação entre telas.
+- [x] Definir arquitetura do sistema.
+- [x] Configurar conexão com o servidor.
 
 ## 2. Banco de dados e backend
-- [ ] Criar banco de dados relacional.
-- [ ] Criar tabelas
-- [ ] Definir chaves primárias e estrangeiras.
-- [ ] Configurar relacionamentos entre tabelas.
-- [ ] Implementar API de comunicação com o banco.
-- [ ] Criar endpoints CRUD para as entidades.
-- [ ] Implementar validação dos dados recebidos.
+- [x] Criar banco de dados Firebase.
+- [x] Implementar API de comunicação com o banco.
+- [x] Implementar validação dos dados recebidos.
 
 ## 3. Autenticação e gerenciamento de usuários
-- [ ] Criar View de Login.
-- [ ] Criar View de Cadastro de Empresa.
-- [ ] Criar View de Recuperação de Senha.
-- [ ] Implementar autenticação de usuários.
-- [ ] Implementar criptografia/hash de senhas.
-- [ ] Implementar controle de sessão.
+- [x] Criar View de Login.
+- [x] Criar View de Cadastro de Empresa.
+- [x] Criar View de Recuperação de Senha.
+- [x] Implementar autenticação de usuários.
+- [x] Implementar criptografia/hash de senhas.
+- [x] Implementar controle de sessão.
 - [ ] Implementar níveis de acesso (Administrador, Agendador e Executor).
 - [ ] Implementar middleware de autenticação.
 - [ ] Implementar controle de permissões.
