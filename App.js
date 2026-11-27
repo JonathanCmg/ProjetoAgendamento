@@ -6,8 +6,9 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-init";
 import store from "./store";
-import { removerUsuarioLogado, setUsuarioLogado } from "./src/slices/usuarioLogadoSlice";
-import { buscarUsuario, sair } from "./src/services/loginService";
+import { removerUsuarioLogado, setEmpresa, setUsuarioLogado } from "./src/slices/usuarioLogadoSlice";
+import { buscarEmpresa, buscarUsuario, sair } from "./src/services/loginService";
+import { estadoAuth } from "./src/services/estadoAuth";
 import LoginStackNavigator from "./src/components/LoginStackNavigator";
 import DrawerNavigator from "./src/components/DrawerNavigator";
 
@@ -19,6 +20,9 @@ function Raiz() {
   useEffect(() => {
     // Roda sempre que alguém loga ou desloga (e quando o app abre)
     const cancelar = onAuthStateChanged(auth, async (usuarioAuth) => {
+      // Durante o cadastro de empresa, quem entra no app é a própria tela de cadastro
+      if (estadoAuth.cadastrando) return;
+
       if (!usuarioAuth) {
         dispatch(removerUsuarioLogado());
         setCarregando(false);
@@ -28,6 +32,8 @@ function Raiz() {
       try {
         const usuario = await buscarUsuario(usuarioAuth.uid);
         if (usuario && usuario.ativo) {
+          const empresa = await buscarEmpresa(usuario.empresaId);
+          dispatch(setEmpresa(empresa ? empresa.toPlain() : null));
           dispatch(setUsuarioLogado(usuario.toPlain()));
         } else {
           Alert.alert(
@@ -39,6 +45,7 @@ function Raiz() {
           await sair();
         }
       } catch (error) {
+        console.log("ERRO BUSCAR USUARIO:", error?.code, error?.message);
         Alert.alert("Erro", "Não foi possível carregar seus dados. Tente novamente.");
         await sair();
       }

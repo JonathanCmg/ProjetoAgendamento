@@ -3,7 +3,7 @@ import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from "r
 import { Button, Text, TextInput } from "react-native-paper";
 import { loginEmailSenha, traduzirErroAuth } from "../services/loginService";
 
-export default function PageLogin() {
+export default function PageLogin({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -19,6 +19,7 @@ export default function PageLogin() {
       await loginEmailSenha(email, senha);
       // Se deu certo, o App.js percebe o login (onAuthStateChanged) e troca de tela.
     } catch (error) {
+      console.log("ERRO LOGIN:", error?.code, error?.message);
       Alert.alert("Erro ao entrar", traduzirErroAuth(error));
     } finally {
       setCarregando(false);
@@ -73,6 +74,13 @@ export default function PageLogin() {
         >
           Entrar
         </Button>
+
+        <Button mode="text" onPress={() => navigation.navigate("RecuperarSenha")} style={styles.link}>
+          Esqueci minha senha
+        </Button>
+        <Button mode="text" onPress={() => navigation.navigate("Cadastro")}>
+          Cadastrar minha empresa
+        </Button>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -85,4 +93,5 @@ const styles = StyleSheet.create({
   subtitulo: { textAlign: "center", marginBottom: 24 },
   campo: { marginBottom: 12 },
   botao: { marginTop: 8 },
+  link: { marginTop: 8 },
 });
